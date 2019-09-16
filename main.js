@@ -1,0 +1,1 @@
+const suit = {hearts: "Hearts", spades: "Spades", diamonds: "Diamonds", clubs: "Clubs"}
