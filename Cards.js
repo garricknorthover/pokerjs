@@ -15,3 +15,5 @@ const CardValue = {
     king: "King",
     ace: "Ace"
 }
+
+module.exports = {Suit, CardValue}
