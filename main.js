@@ -1,13 +1,15 @@
-import {CardValue, Suit} from './Cards'
+import { CardValue, Suit } from './Cards'
 
-const RandomSuit = Object.values(Suit)[Math.random() * 4 << 0]
-const RandomCardValue = Object.values(CardValue)[Math.random() * 14 << 0]
+const randomSuit = Object.values(Suit)[Math.random() * 4 << 0]
+const randomCardValue = Object.values(CardValue)[Math.random() * 14 << 0]
 
-const Card = (value, suit) => `${value} of ${suit}`
+const cardTitle = (value, suit) => `${value} of ${suit}`
 
-const RandomCard = Card(RandomCardValue, RandomSuit)
+const randomCard = cardTitle(randomCardValue, randomSuit)
 
-console.log(RandomCard)
+console.log(randomCard)
+
+export {cardTitle}
 
 
 

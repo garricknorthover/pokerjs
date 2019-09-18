@@ -15,5 +15,5 @@ const CardValue = {
     king: "King",
     ace: "Ace"
 }
-export{Suit, CardValue}
+export { Suit, CardValue }
 

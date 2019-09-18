@@ -1,7 +1,6 @@
-const {test} = require('jest')
-const {Card, Suit, CardValue} = require('./main')
-
-// test('converts cards to words', () =>{
-//     expect(Card(ace,clubs).ToBe("Ace of Clubs"))
-// })
-Card(ace,clubs)
+import { cardTitle } from './Main'
+import { CardValue, Suit } from './Cards'
+  
+test('converts cards to words', () => {
+    expect(cardTitle(CardValue.ace, Suit.clubs)).toBe("Ace of Clubs")
+})
