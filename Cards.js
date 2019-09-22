@@ -1,19 +1,6 @@
-const Suit = { hearts: "Hearts", spades: "Spades", diamonds: "Diamonds", clubs: "Clubs" }
+const Suit = { Hearts: 1, Spades: 2, Diamonds: 3, Clubs: 4 }
 const CardValue = {
-    one: "One",
-    two: "Two",
-    three: "Three",
-    four: "Four",
-    five: "Five",
-    six: "Six",
-    seven: "Seven",
-    eight: "Eight",
-    nine: "Nine",
-    ten: "Ten",
-    jack: "Jack",
-    queen: "Queen",
-    king: "King",
-    ace: "Ace"
+    Two: 2, Three: 3, Four: 4, Five: 5, Six: 6, Seven: 7, Eight: 8, Nine: 9, Ten: 10, Jack: 11, Queen: 12, King: 13, Ace: 14
 }
 export { Suit, CardValue }
 
