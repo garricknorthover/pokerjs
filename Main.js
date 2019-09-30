@@ -11,13 +11,14 @@ const ranOb = (ob) => Object.keys(ob)[Math.random() * (Object.keys(ob).length) <
 const drawCard = (value = ranOb(CardValue), suit = ranOb(Suit)) => ({ CardValue: value, Suit: suit })
 const toWords =(card) => `${card.CardValue} of ${card.Suit}`
 
-const hand = times(() => toWords(drawCard()), 5)
+const hand = times(() => drawCard(), 5)
+
+const isFlush = (f) => f.every(x => x.Suit == f[0].Suit)
+const isAStraight = () => true
+const isRoyalFlush = () => true
 
 
-console.log(hand)
-
-
-export { drawCard, toWords }
+export { drawCard, toWords, isFlush, isAStraight, isRoyalFlush }
 
 
 
