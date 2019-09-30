@@ -1,7 +1,7 @@
 import { CardValue, Suit } from './Cards'
-import { drawCard } from './Main'
+import { drawCard, toWords } from './Main'
 
 test('converts cards to words', () => {
-    expect(drawCard(CardValue.ace, Suit.clubs)).toBe("Ace of Clubs")
+    expect(toWords(drawCard('Ace', 'Clubs'))).toBe("Ace of Clubs")
 })
 

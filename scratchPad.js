@@ -12,9 +12,9 @@ const ranOb = (ob) => Object.keys(ob)[Math.random() * (Object.keys(ob).length) <
  * if no arguments then randon keys generated
  */
 const drawCard = (value = ranOb(CardValue), suit = ranOb(Suit)) => ({ CardValue: value, Suit: suit })
+const toWords =(card) => `${card.CardValue} of ${card.Suit}`
 
-const hand = times(() => drawCard(), 5)
-    .map(card => `${card.CardValue} of ${card.Suit}`)
+const hand = times(() => toWords(drawCard()), 5)
 
 
 console.log(hand)
