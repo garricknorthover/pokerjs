@@ -1,7 +1,7 @@
 import { drawCard, toWords, isFlush, isAStraight, isRoyalFlush } from './Main'
 
 test('converts cards to words', () => {
-    expect(toWords(drawCard('Ace', 'Clubs'))).toBe("Ace of Clubs")
+    expect(toWords(drawCard('Ace', 'Clubs'))).toBe('Ace of Clubs')
 })
 
 
@@ -17,7 +17,7 @@ test('if all the same suit, is a flush', () =>
 test('test for a straight', () =>
     expect(isAStraight(
         [{ CardValue: 'Queen', Suit: 'Clubs' },
-        { CardValue: 'Ace', Suit: 'Hearts' },
+        { CardValue: 'Nine', Suit: 'Hearts' },
         { CardValue: 'King', Suit: 'Clubs' },
         { CardValue: 'Jack', Suit: 'Diamonds' },
         { CardValue: 'Ten', Suit: 'Clubs' }])).toBe(true))
