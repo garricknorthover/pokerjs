@@ -15,17 +15,21 @@ const hand = times(() => drawCard(), 5)
 
 const isFlush = (f) => f.every(x => x.Suit == f[0].Suit)
 
-const isAStraight = (ob) => ob.map(c => c.CardValue)
+const toObjValues = (ob) => ob.map(c => c.CardValue)
     .map(card => Object.values(CardValueEnum)
         .find(cardRef => CardValueEnum[card] === cardRef))
     .sort((a, b) => a - b)
+
+const isAStraight = (ob) => toObjValues(ob)
     .every((x, indx, arr) => indx == arr.length - 1 ? x == arr[indx - 1] + 1 : x == arr[indx + 1] - 1)
 
+const findHighcard = (ob) => Object.keys(CardValueEnum)[toObjValues(ob).slice(-1) - 2]
+
 const isStraightFlush = (ob) => isFlush(ob) && isAStraight(ob)
-const isRoyalFlush = () => true
+const isRoyalFlush = (ob) => isStraightFlush(ob) && findHighcard(ob) === 'Ace'
 
 
-export { drawCard, toWords, isFlush, isAStraight, isStraightFlush, isRoyalFlush }
+export { drawCard, toWords, isFlush, isAStraight, findHighcard, isStraightFlush, isRoyalFlush }
 
 
 
