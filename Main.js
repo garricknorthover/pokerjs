@@ -9,7 +9,7 @@ const ranOb = (ob) => Object.keys(ob)[Math.random() * (Object.keys(ob).length) <
  * if no arguments then randon keys generated
  */
 const drawCard = (value = ranOb(CardValueEnum), suit = ranOb(SuitEnum)) => ({ CardValue: value, Suit: suit })
-const toWords =(card) => `${card.CardValue} of ${card.Suit}`
+const toWords = (card) => `${card.CardValue} of ${card.Suit}`
 
 const hand = times(() => drawCard(), 5)
 
@@ -21,10 +21,11 @@ const isAStraight = (ob) => ob.map(c => c.CardValue)
     .sort((a, b) => a - b)
     .every((x, indx, arr) => indx == arr.length - 1 ? x == arr[indx - 1] + 1 : x == arr[indx + 1] - 1)
 
-    const isRoyalFlush = () => true
+const isStraightFlush = (ob) => isFlush(ob) && isAStraight(ob)
+const isRoyalFlush = () => true
 
 
-export { drawCard, toWords, isFlush, isAStraight, isRoyalFlush }
+export { drawCard, toWords, isFlush, isAStraight, isStraightFlush, isRoyalFlush }
 
 
 
