@@ -1,5 +1,5 @@
 import { CardValueEnum, SuitEnum } from './Cards'
-import { times } from 'ramda'
+import { times, countBy } from 'ramda'
 
 //picks randon object key
 const ranOb = (ob) => Object.keys(ob)[Math.random() * (Object.keys(ob).length) << 0]
@@ -16,9 +16,8 @@ const hand = times(() => drawCard(), 5)
 const isFlush = (f) => f.every(x => x.Suit == f[0].Suit)
 
 const toObjValues = (ob) => ob.map(c => c.CardValue)
-    .map(card => Object.values(CardValueEnum)
-        .find(cardRef => CardValueEnum[card] === cardRef))
-    .sort((a, b) => a - b)
+    .map(card => Object.values(CardValueEnum).find(cardRef => CardValueEnum[card] === cardRef))
+    .sort((a, b) => a - b) 
 
 const isAStraight = (ob) => toObjValues(ob)
     .every((x, indx, arr) => indx == arr.length - 1 ? x == arr[indx - 1] + 1 : x == arr[indx + 1] - 1)
@@ -27,9 +26,10 @@ const findHighcard = (ob) => Object.keys(CardValueEnum)[toObjValues(ob).slice(-1
 
 const isStraightFlush = (ob) => isFlush(ob) && isAStraight(ob)
 const isRoyalFlush = (ob) => isStraightFlush(ob) && findHighcard(ob) === 'Ace'
+const isFourKind = (obj) => Object.values(countBy(Math.floor,toObjValues(obj)))[0] == 4 ? true : false
 
 
-export { drawCard, toWords, isFlush, isAStraight, findHighcard, isStraightFlush, isRoyalFlush }
+export { drawCard, toWords, isFlush, isAStraight, findHighcard, isStraightFlush, isRoyalFlush, isFourKind }
 
 
 

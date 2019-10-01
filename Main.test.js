@@ -1,4 +1,4 @@
-import { drawCard, toWords, isFlush, isAStraight, findHighcard, isStraightFlush, isRoyalFlush } from './Main'
+import { drawCard, toWords, isFlush, isAStraight, findHighcard, isStraightFlush, isRoyalFlush, isFourKind } from './Main'
 
 test('converts cards to words', () => {
     expect(toWords(drawCard('Ace', 'Clubs'))).toBe('Ace of Clubs')
@@ -49,7 +49,7 @@ test('test for royal flush', () =>
         { CardValue: 'Ten', Suit: 'Clubs' }])).toBe(true))
 
 test('test for four of a kind', () =>
-    expect(isFourOfAKind(
+    expect(isFourKind(
         [{ CardValue: 'Nine', Suit: 'Clubs' },
         { CardValue: 'Nine', Suit: 'Hearts' },
         { CardValue: 'Nine', Suit: 'Clubs' },
