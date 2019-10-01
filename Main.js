@@ -26,8 +26,9 @@ const findHighcard = (ob) => Object.keys(CardValueEnum)[toObjValues(ob).slice(-1
 
 const isStraightFlush = (ob) => isFlush(ob) && isAStraight(ob)
 const isRoyalFlush = (ob) => isStraightFlush(ob) && findHighcard(ob) === 'Ace'
-const isFourKind = (obj) => Object.values(countBy(Math.floor,toObjValues(obj)))[0] == 4 ? true : false
+const ofAKind = (obj, num) => Object.values(countBy(Math.floor)(toObjValues(obj))).sort((a,b) => b - a)[0] === num ? true : false
 
+const isFourKind = (obj) => ofAKind(obj,4)
 
 export { drawCard, toWords, isFlush, isAStraight, findHighcard, isStraightFlush, isRoyalFlush, isFourKind }
 

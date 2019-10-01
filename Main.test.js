@@ -51,8 +51,8 @@ test('test for royal flush', () =>
 test('test for four of a kind', () =>
     expect(isFourKind(
         [{ CardValue: 'Nine', Suit: 'Clubs' },
-        { CardValue: 'Nine', Suit: 'Hearts' },
-        { CardValue: 'Nine', Suit: 'Clubs' },
-        { CardValue: 'Nine', Suit: 'Diamonds' },
+        { CardValue: 'Ten', Suit: 'Hearts' },
+        { CardValue: 'Ten', Suit: 'Clubs' },
+        { CardValue: 'Ten', Suit: 'Diamonds' },
         { CardValue: 'Ten', Suit: 'Clubs' }])).toBe(true))
 
