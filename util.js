@@ -1,7 +1,5 @@
-const suitEnum = { Hearts: 1, Spades: 2, Diamonds: 3, Clubs: 4 }
-const cardValueEnum = {
-    Two: 2, Three: 3, Four: 4, Five: 5, Six: 6, Seven: 7, Eight: 8, Nine: 9, Ten: 10, Jack: 11, Queen: 12, King: 13, Ace: 14
-}
+import { cardValueEnum } from './cards'
+import { countBy } from 'ramda'
 
 const toObjValues = (ob) => ob.map(c => c.CardValue)
     .map(card => Object.values(cardValueEnum).find(cardRef => cardValueEnum[card] === cardRef))
@@ -9,5 +7,7 @@ const toObjValues = (ob) => ob.map(c => c.CardValue)
 
 const ofKind = (obj) => Object.values(countBy(Math.floor)(toObjValues(obj))).sort((a, b) => b - a)
 
-export { suitEnum, cardValueEnum }
+//picks randon object key
+const ranOb = (ob) => Object.keys(ob)[Math.random() * (Object.keys(ob).length) << 0]
 
+export { toObjValues, ofKind, ranOb }
