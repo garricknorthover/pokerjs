@@ -5,7 +5,6 @@ import { ranOb } from './util'
 
 const drawCard = (value = ranOb(cardValueEnum), suit = ranOb(suitEnum)) => ({ CardValue: value, Suit: suit })
 const toWords = (card) => `${card.CardValue} of ${card.Suit}`
-
 const hand = times(() => drawCard(), 5)
 
 
