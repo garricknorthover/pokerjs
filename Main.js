@@ -17,7 +17,7 @@ const isFlush = (f) => f.every(x => x.Suit == f[0].Suit)
 
 const toObjValues = (ob) => ob.map(c => c.CardValue)
     .map(card => Object.values(CardValueEnum).find(cardRef => CardValueEnum[card] === cardRef))
-    .sort((a, b) => a - b) 
+    .sort((a, b) => a - b)
 
 const isAStraight = (ob) => toObjValues(ob)
     .every((x, indx, arr) => indx == arr.length - 1 ? x == arr[indx - 1] + 1 : x == arr[indx + 1] - 1)
@@ -26,11 +26,18 @@ const findHighcard = (ob) => Object.keys(CardValueEnum)[toObjValues(ob).slice(-1
 
 const isStraightFlush = (ob) => isFlush(ob) && isAStraight(ob)
 const isRoyalFlush = (ob) => isStraightFlush(ob) && findHighcard(ob) === 'Ace'
-const ofAKind = (obj, num) => Object.values(countBy(Math.floor)(toObjValues(obj))).sort((a,b) => b - a)[0] === num ? true : false
+const ofAKind = (obj, num) => Object.values(countBy(Math.floor)(toObjValues(obj))).sort((a, b) => b - a)[0] === num ? true : false
 
-const isFourKind = (obj) => ofAKind(obj,4)
+const ofAKind = (obj) => Object.values(countBy(Math.floor)(toObjValues(obj))).sort((a, b) => b - a)
 
-export { drawCard, toWords, isFlush, isAStraight, findHighcard, isStraightFlush, isRoyalFlush, isFourKind }
+const isFourKind = (obj) => ofAKind(obj)[0] === 4
+const isThreeKind = (obj) => ofAKind(obj)[0] === 3 && ofAKind(obj)[1] !== 2
+const isTwoPair = (obj) => (ofAKind(obj)[0] && ofAKind(obj)[1]) === 2
+const isFullHouse = (obj) => ofAKind(obj)[0] === 3 && ofAKind(obj)[1] === 2
+
+export { drawCard, toWords, isFlush, isAStraight, 
+    findHighcard, isStraightFlush, isRoyalFlush, isFourKind, 
+    isThreeKind, isTwoPair, isFullHouse }
 
 
 
