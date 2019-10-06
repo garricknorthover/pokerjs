@@ -1,4 +1,5 @@
-import { countBy} from 'ramda'
+import { countBy } from 'ramda'
+import { Z_FILTERED } from 'zlib'
 const SuitEnum = { Hearts: 1, Spades: 2, Diamonds: 3, Clubs: 4 }
 const CardValueEnum = {
     Two: 2, Three: 3, Four: 4, Five: 5, Six: 6, Seven: 7, Eight: 8, Nine: 9, Ten: 10, Jack: 11, Queen: 12, King: 13, Ace: 14
@@ -20,21 +21,28 @@ const twoPair =
     { CardValue: 'Nine', Suit: 'Clubs' }]
 
 
-const toObjValues = (ob) => ob.map(c => c.CardValue)
-    .map(card => Object.values(CardValueEnum).find(cardRef => CardValueEnum[card] === cardRef))
-    .sort((a, b) => a - b)
+// const a = Object.values(twoPair)
+// a
+const toObjValues = (hand) => hand.map(x => x.CardValue).map(v => CardValueEnum[v]).sort((a, b) => a - b)
 
-const ofAKind = (obj) => Object.values(countBy(Math.floor)(toObjValues(obj))).sort((a,b) => b - a)
+const a = toObjValues(twoPair)
+a
 
-const isFourKind = (obj) => ofAKind(obj)[0] === 4 
-const isThreeKind = (obj) => ofAKind(obj)[0] === 3 && ofAKind(obj)[1] !== 2
-const isTwoPair = (obj) => (ofAKind(obj)[0] && ofAKind(obj)[1]) === 2
-const isFullHouse = (obj) => ofAKind(obj)[0] === 3 && ofAKind(obj)[1] === 2
-const r = isTwoPair(twoPair)
+const c =  [... new Set(a)].map(z => a.filter(x => x == z).length).sort((a, b) => b - a)
+c
 
-r
-const t = isFullHouse(three)
-t
+
+// const ofAKind = (obj) => Object.values(countBy(Math.floor)(toObjValues(obj))).sort((a,b) => b - a)
+
+// const isFourKind = (obj) => ofAKind(obj)[0] === 4 
+// const isThreeKind = (obj) => ofAKind(obj)[0] === 3 && ofAKind(obj)[1] !== 2
+// const isTwoPair = (obj) => (ofAKind(obj)[0] && ofAKind(obj)[1]) === 2
+// const isFullHouse = (obj) => ofAKind(obj)[0] === 3 && ofAKind(obj)[1] === 2
+// const r = isTwoPair(twoPair)
+
+// r
+// const t = isFullHouse(three)
+
 
 
 
