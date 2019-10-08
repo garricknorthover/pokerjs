@@ -1,9 +1,8 @@
 import { cardValueEnum } from './cards'
 import { countBy } from 'ramda'
 
-const toObjValues = (ob) => ob.map(c => c.CardValue)
-    .map(card => Object.values(cardValueEnum).find(cardRef => cardValueEnum[card] === cardRef))
-    .sort((a, b) => a - b)
+const toObjValues = (hand) => hand.map(x => x.CardValue).map(v => cardValueEnum[v]).sort((a, b) => a - b)
+
 
 const ofKind = (obj) => Object.values(countBy(Math.floor)(toObjValues(obj))).sort((a, b) => b - a)
 
