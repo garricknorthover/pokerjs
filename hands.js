@@ -12,7 +12,6 @@ const isThreeKind = (obj) => ofKind(obj)[0] === 3 && ofKind(obj)[1] !== 2
 const isTwoPair = (obj) => (ofKind(obj)[0] && ofKind(obj)[1]) === 2
 const isFullHouse = (obj) => ofKind(obj)[0] === 3 && ofKind(obj)[1] === 2
 const isPair = (obj) => ofKind(obj)[0] === 2 && ofKind(obj)[1] === 1
-
 export {
     isFlush, isAStraight,
     findHighcard, isStraightFlush, isRoyalFlush, isFourKind,
