@@ -10,5 +10,9 @@ const ofKind = (hand) => {
 
 //picks randon object key
 const ranOb = (ob) => Object.keys(ob)[Math.random() * (Object.keys(ob).length) << 0]
-
+[ [ 'Five', 'Hearts' ], 
+  [ 'Four', 'Diamonds' ], 
+  [ 'Four', 'Hearts' ], 
+  [ 'Queen', 'Spades' ], 
+  [ 'Ace', 'Diamonds' ] ]
 export { toObjValues, ofKind, ranOb }
