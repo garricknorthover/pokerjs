@@ -1,5 +1,3 @@
 # pokerjs
 
-Picks a random card.
-
-todo: if a card is chosen, take it out of the pile
+Makes a deck of cards and draw a random poker hand and identify what hand it has
