@@ -1,18 +1,24 @@
-import { cardValueEnum } from './cards'
+import { times } from 'ramda'
+import { cardValueEnum, suitEnum } from './cards'
 
-const toObjValues = (hand) => hand.map(x => x.CardValue).map(v => cardValueEnum[v]).sort((a, b) => a - b)
+const toObjValues = (ob) => ob.map(x => x.card).map(v => cardValueEnum[v]).sort((a, b) => a - b)
 
 
-const ofKind = (hand) => {
-    const theSet = toObjValues(hand)
+const ofSameKind = (cards) => {
+    const theSet = toObjValues(cards)
     return [... new Set(theSet)].map(x => theSet.filter((y) => x == y).length).reverse()
 }
+const deck = Object.keys(suitEnum)
+    .map(x => Object.keys(cardValueEnum).map(y => ({ card: y, suit: x })))
+    .flat()//?
 
-//picks randon object key
-const ranOb = (ob) => Object.keys(ob)[Math.random() * (Object.keys(ob).length) << 0]
-[ [ 'Five', 'Hearts' ], 
-  [ 'Four', 'Diamonds' ], 
-  [ 'Four', 'Hearts' ], 
-  [ 'Queen', 'Spades' ], 
-  [ 'Ace', 'Diamonds' ] ]
-export { toObjValues, ofKind, ranOb }
+const randomCard = () => deck.length * Math.random() << 0
+
+const drawCard = () => deck.splice(randomCard(), 1)
+
+const hand = () => times(() => drawCard(), 5).flat()
+
+
+
+
+export { toObjValues, ofSameKind, deck, hand }
